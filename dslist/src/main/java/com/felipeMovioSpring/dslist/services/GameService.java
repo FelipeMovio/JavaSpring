@@ -24,8 +24,6 @@ public class GameService {
     }
 
 
-
-
     @Transactional(readOnly = true)
     public List<GameMinDTO> findAll(){ // Busca todos os jogos no banco de dados
         // Converte a lista de Game para uma lista de GameMinDTO

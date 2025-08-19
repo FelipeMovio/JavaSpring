@@ -2,8 +2,10 @@ package com.felipeMovioSpring.dslist.controllers;
 
 
 import com.felipeMovioSpring.dslist.DTO.GameDTO;
+import com.felipeMovioSpring.dslist.DTO.GameListDTO;
 import com.felipeMovioSpring.dslist.DTO.GameMinDTO;
 import com.felipeMovioSpring.dslist.entities.Game;
+import com.felipeMovioSpring.dslist.services.GameListService;
 import com.felipeMovioSpring.dslist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +34,6 @@ public class GameController {
         GameDTO result = gameService.findById(id);
         return result;
     }
+
+
 }
