@@ -3,6 +3,7 @@ package com.felipeMovioSpring.dslist.services;
 import com.felipeMovioSpring.dslist.DTO.GameDTO;
 import com.felipeMovioSpring.dslist.DTO.GameMinDTO;
 import com.felipeMovioSpring.dslist.entities.Game;
+import com.felipeMovioSpring.dslist.projections.GameMinProjection;
 import com.felipeMovioSpring.dslist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,14 @@ public class GameService {
       List<Game> result = gameRepository.findAll();
       List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
         return dto;
+    }
+
+
+    // Service que retorna os jogos dependendo da lista
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId){
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
+
     }
 }
